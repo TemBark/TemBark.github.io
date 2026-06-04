@@ -1,66 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aizzuddin | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <header class="navbar">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </header>
+    <nav class="navbar">
+        <div class="logo">Aizzuddin.</div>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <section id="home" class="section">
-    <div class="container">
-      <h1>Hi, I'm Aizzuddin</h1>
-      <p>UTeM Student | Web Developer | Game Developer</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-  </section>
+    <header class="hero">
+        <div class="hero-content reveal">
+            <h1>System Developer <br>& Game Programmer.</h1>
+            <p>Specializing in C++, C#, Unity architecture, and motion graphics.</p>
+        </div>
+    </header>
 
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I am a student at UTeM interested in UI/UX design and web development.</p>
-    </div>
-  </section>
+    <section id="work" class="work-section">
+        <div class="work-grid">
+            
+            <a href="#" class="work-item reveal">
+                <div class="work-image">
+                    <img src="images/sky-splitter.jpg" alt="Sky Splitter Project">
+                    <div class="overlay">
+                        <h3>Sky Splitter</h3>
+                        <p>Unity / C# / Game Design</p>
+                    </div>
+                </div>
+            </a>
 
-  <section id="education" class="section">
-    <div class="container">
-      <h2>Education</h2>
-      <p>University Teknikal Malaysia Melaka (UTeM)</p>
-    </div>
-  </section>
+            <a href="#" class="work-item reveal">
+                <div class="work-image">
+                    <img src="images/redbull-zenitsu.jpg" alt="Red Bull x Zenitsu Motion Graphics">
+                    <div class="overlay">
+                        <h3>Red Bull x Zenitsu</h3>
+                        <p>Adobe After Effects / Motion Graphics</p>
+                    </div>
+                </div>
+            </a>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Projects</h2>
+            <a href="#" class="work-item reveal">
+                <div class="work-image">
+                    <img src="images/hantu-teh-o.jpg" alt="Hantu Teh O Platformer">
+                    <div class="overlay">
+                        <h3>Hantu Teh O</h3>
+                        <p>2D Side-scroller / Level Design</p>
+                    </div>
+                </div>
+            </a>
 
-      <div class="card">
-        <h3>Brewie Website</h3>
-        <p>HTML, CSS, JS web project</p>
-      </div>
+            <a href="#" class="work-item reveal">
+                <div class="work-image">
+                    <img src="images/bites-burger.jpg" alt="Bite's Burger Inventory System">
+                    <div class="overlay">
+                        <h3>Bite's Burger System</h3>
+                        <p>System Architecture / Inventory</p>
+                    </div>
+                </div>
+            </a>
 
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Email: yourname@gmail.com</p>
-      <p>GitHub: github.com/yourname</p>
-    </div>
-  </section>
+    <section id="about" class="about-section reveal">
+        <h2>About Me</h2>
+        <p>I am a Computer Science student at Universiti Teknikal Malaysia Melaka (UTeM). I blend technical programming with creative multimedia, working across entity-component-system models, physics simulations, and commercial motion design. Whether I am optimizing game mechanics or designing system architectures, I focus on building efficient, modular, and engaging digital experiences.</p>
+    </section>
 
-  <script src="script.js"></script>
+    <footer id="contact" class="footer reveal">
+        <h2>Let's build something.</h2>
+        <a href="mailto:your.email@student.utem.edu.my" class="contact-btn">Get in touch</a>
+        <div class="social-links">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+        </div>
+        <p class="copyright">© 2026 Aizzuddin.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
