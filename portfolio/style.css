@@ -113,7 +113,8 @@ h1, h2, h3, .logo {
     overflow: hidden;
 }
 
-.work-image img {
+.work-image img,
+.work-image video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -149,8 +150,8 @@ h1, h2, h3, .logo {
     transition: transform 0.4s ease 0.1s;
 }
 
-/* Hover Effects */
-.work-item:hover .work-image img {
+.work-item:hover .work-image img,
+.work-item:hover .work-image video {
     transform: scale(1.05);
 }
 
