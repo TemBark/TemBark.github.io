@@ -12,91 +12,124 @@
     <nav class="navbar">
         <div class="logo">Aizzuddin.</div>
         <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
             <li><a href="#work">Work</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
+    <section id="hero" class="hero section-snap">
         <div class="hero-content reveal">
             <h1>System Developer <br>& Game Programmer.</h1>
             <p>Specializing in C++, C#, Unity architecture, and motion graphics.</p>
         </div>
-    </header>
-
-    <section id="work" class="work-section">
-    <div class="work-grid">
-        
-        <a href="#" class="work-item reveal">
-            <div class="work-image">
-                <video autoplay loop muted playsinline>
-                    <source src="images/Codebreak-Escape.mp4" type="video/mp4">
-                    <img src="images/sky-splitter.jpg" alt="-">
-                </video>
-                <div class="overlay">
-                    <h3>CODEBREAK ESCAPE</h3>
-                    <p>Unity / C# / Game Design</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="work-item reveal">
-            <div class="work-image">
-                <video autoplay loop muted playsinline>
-                    <source src="images/Animating.mp4" type="video/mp4">
-                    <img src="images/redbull-zenitsu.jpg" alt="-">
-                </video>
-                <div class="overlay">
-                    <h3>BLENDER</h3>
-                    <p>Modelling / Animating</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="work-item reveal">
-            <div class="work-image">
-                <video autoplay loop muted playsinline>
-                    <source src="images/Hantu-Teh-O.mp4" type="video/mp4">
-                    <img src="images/hantu-teh-o.jpg" alt="-">
-                </video>
-                <div class="overlay">
-                    <h3>HANTU TEH O</h3>
-                    <p>OpenGL / 2D Side-scroller / Level Design</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="work-item reveal">
-            <div class="work-image">
-                <video autoplay loop muted playsinline>
-                    <source src="images/smart-inventory.mp4" type="video/mp4">
-                    <img src="images/bites-burger.jpg" alt="-">
-                </video>
-                <div class="overlay">
-                    <h3>SMART INVENTORY MANAGEMENT</h3>
-                    <p>C++ / System Architecture / Inventory</p>
-                </div>
-            </div>
-        </a>
-
-    </div>
-</section>
-
-    <section id="about" class="about-section reveal">
-        <h2>About Me</h2>
-        <p>I am an Information Technology (Game Technology) student at Universiti Teknikal Malaysia Melaka (UTeM). I blend technical programming with creative multimedia, working across entity-component-system models, physics simulations, and commercial motion design. Whether I am optimizing game mechanics or designing system architectures, I focus on building efficient, modular, and engaging digital experiences.</p>
     </section>
 
-    <footer id="contact" class="footer reveal">
-        <h2>Let's build something.</h2>
-        <a href="mailto:b032410252@student.utem.edu.my" class="contact-btn">Get in touch</a>
-        <div class="social-links">
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
+    <section id="work" class="work-section section-snap">
+        <div class="work-grid">
+            
+            <a href="#" class="work-item reveal" 
+               data-title="CODEBREAK ESCAPE" 
+               data-tech="Unity / C# / Game Design"
+               data-vid="images/Codebreak-Escape.mp4" 
+               data-desc="Codebreak Escape is a puzzle-driven game where players must utilize logic and system mechanics to navigate through secure areas. Focused heavily on custom C# scripting for interactive objects.">
+                <div class="work-image">
+                    <video autoplay loop muted playsinline>
+                        <source src="images/Codebreak-Escape.mp4" type="video/mp4">
+                        <img src="images/sky-splitter.jpg" alt="-">
+                    </video>
+                    <div class="overlay">
+                        <h3>CODEBREAK ESCAPE</h3>
+                        <p>Unity / C# / Game Design</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="work-item reveal"
+               data-title="BLENDER ANIMATING" 
+               data-tech="Modelling / Animating"
+               data-vid="images/Animating.mp4" 
+               data-desc="Commercial 3D modeling and animation project demonstrating advanced rendering techniques, lighting setups, and fluid motion graphics integration.">
+                <div class="work-image">
+                    <video autoplay loop muted playsinline>
+                        <source src="images/Animating.mp4" type="video/mp4">
+                        <img src="images/redbull-zenitsu.jpg" alt="-">
+                    </video>
+                    <div class="overlay">
+                        <h3>BLENDER</h3>
+                        <p>Modelling / Animating</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="work-item reveal"
+               data-title="HANTU TEH O" 
+               data-tech="OpenGL / 2D Side-scroller"
+               data-vid="images/Hantu-Teh-O.mp4" 
+               data-desc="A 2D side-scrolling platformer featuring custom level design and entity mechanics. Built to explore collision detection and smooth camera tracking in a 2D environment.">
+                <div class="work-image">
+                    <video autoplay loop muted playsinline>
+                        <source src="images/Hantu-Teh-O.mp4" type="video/mp4">
+                        <img src="images/hantu-teh-o.jpg" alt="-">
+                    </video>
+                    <div class="overlay">
+                        <h3>HANTU TEH O</h3>
+                        <p>OpenGL / 2D Side-scroller / Level Design</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="work-item reveal"
+               data-title="SMART INVENTORY MANAGEMENT" 
+               data-tech="C++ / System Architecture"
+               data-vid="images/smart-inventory.mp4" 
+               data-desc="A robust inventory management and reporting system designed to track stock levels, generate automated reports, and streamline database operations using modular C++ architecture.">
+                <div class="work-image">
+                    <video autoplay loop muted playsinline>
+                        <source src="images/smart-inventory.mp4" type="video/mp4">
+                        <img src="images/bites-burger.jpg" alt="-">
+                    </video>
+                    <div class="overlay">
+                        <h3>SMART INVENTORY MANAGEMENT</h3>
+                        <p>C++ / System Architecture / Inventory</p>
+                    </div>
+                </div>
+            </a>
+
         </div>
-        <p class="copyright">© 2026 Aizzuddin.</p>
+    </section>
+
+    <section id="about" class="about-section section-snap reveal">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>I am an Information Technology (Game Technology) student at Universiti Teknikal Malaysia Melaka (UTeM). I blend technical programming with creative multimedia, working across entity-component-system models, physics simulations, and commercial motion design. Whether I am optimizing game mechanics or designing system architectures, I focus on building efficient, modular, and engaging digital experiences.</p>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer section-snap reveal">
+        <div class="footer-content">
+            <h2>Let's build something.</h2>
+            <a href="mailto:b032410252@student.utem.edu.my" class="contact-btn">Get in touch</a>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <p class="copyright">© 2026 Aizzuddin.</p>
+        </div>
     </footer>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-video-container">
+                <video id="modal-video" autoplay loop muted playsinline></video>
+            </div>
+            <h2 id="modal-title">Project Title</h2>
+            <h4 id="modal-tech" style="color: #999; margin-bottom: 15px; font-family: 'Syne', sans-serif;">Tech</h4>
+            <p id="modal-desc">Project description goes here...</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
