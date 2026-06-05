@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Aizzuddin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body style="padding-top: 120px; display: flex; flex-direction: column; min-height: 100vh;">
+
+    <nav class="navbar">
+        <div class="logo">Aizzuddin.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="academic.html">Academic</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="contact-page" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+        <div class="content-wrapper" style="display: flex; gap: 4rem; max-width: 1000px; width: 100%; flex-wrap: wrap;">
+            
+            <div style="flex: 1; min-width: 300px;">
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Let's talk.</h1>
+                <p style="color: #bbb; font-size: 1.1rem; margin-bottom: 2rem;">Currently open for collaborative projects and internship placements.</p>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Email</h4>
+                    <a href="mailto:uddinnuddin@gmail.com" style="color: #bbb; text-decoration: none; font-size: 1.1rem; transition: color 0.3s;">uddinnuddin@gmail.com</a>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Phone</h4>
+                    <p style="color: #bbb; font-size: 1.1rem;">+6011 6981 4741</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Location</h4>
+                    <p style="color: #bbb; font-size: 1.1rem;">Bandar Puncak Alam, Kuala Selangor</p>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 300px; background: var(--accent-color); padding: 3rem; border-radius: 12px;">
+                <form onsubmit="event.preventDefault(); alert('Message sent successfully! (Prototype UI feature)');" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="color: #888; font-size: 0.9rem;">Name</label>
+                        <input type="text" required style="background: transparent; border: none; border-bottom: 1px solid #444; color: #fff; padding: 0.5rem 0; font-family: inherit; font-size: 1rem; outline: none;">
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="color: #888; font-size: 0.9rem;">Email</label>
+                        <input type="email" required style="background: transparent; border: none; border-bottom: 1px solid #444; color: #fff; padding: 0.5rem 0; font-family: inherit; font-size: 1rem; outline: none;">
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="color: #888; font-size: 0.9rem;">Message</label>
+                        <textarea rows="4" required style="background: transparent; border: none; border-bottom: 1px solid #444; color: #fff; padding: 0.5rem 0; font-family: inherit; font-size: 1rem; outline: none; resize: none;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="margin-top: 1rem; cursor: pointer; border: none; font-size: 1rem;">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
