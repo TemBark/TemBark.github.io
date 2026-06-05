@@ -1,13 +1,3 @@
-Here is the **complete, fully corrected, and verified `style.css` code**.
-
-I have completely rebuilt the structure to remove the broken syntax (the extra `}` braces) that was causing your grid rules to fail, and I moved the "horizontal scroll killers" to the very top so they are guaranteed to load first and protect your layout.
-
-Copy everything below and replace your entire `style.css` file with it.
-
-```css
-/* =========================================
-   BASE VARIABLES, RESET & SCROLL FIX
-========================================= */
 :root {
     --bg-color: #0a0a0a;
     --text-color: #f4f4f4;
