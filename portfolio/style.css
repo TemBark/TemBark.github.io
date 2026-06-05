@@ -306,19 +306,26 @@ body.page-exit {
 }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
+/* =========================================
+   MOBILE RESPONSIVENESS (Final Fix)
+========================================= */
 @media (max-width: 900px) {
-    /* Prevent words from cutting/hyphenating */
-    h1, h2, h3, p, a, span {
-        hyphens: none !important;
-        word-break: normal !important;
+    
+    /* 1. Force the Navbar to be solid so the button is always visible */
+    .navbar {
+        mix-blend-mode: normal !important; 
+        background-color: var(--bg-color);
+        padding: 1.5rem 5%;
     }
 
-    /* Force font to scale down further to prevent cutting */
-    h1 { font-size: 2rem !important; }
-    h2 { font-size: 1.8rem !important; }
+    /* 2. Force the Hamburger to show */
+    .hamburger { 
+        display: flex !important; 
+        cursor: pointer;
+        z-index: 9999;
+    }
 
-    /* Fix Nav Dropdown */
-    .hamburger { display: flex; }
+    /* 3. Dropdown Menu */
     .nav-links {
         position: absolute; 
         top: 100%; 
@@ -347,7 +354,15 @@ body.page-exit {
         text-align: center; 
     }
 
-    /* Layout Adjustments */
+    /* 4. Animation fix for the hamburger icon */
+    .hamburger.toggle span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.toggle span:nth-child(2) { opacity: 0; }
+    .hamburger.toggle span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* 5. Typography and Layout Fixes */
+    h1 { font-size: 2rem !important; hyphens: none !important; word-break: normal !important; }
+    h2 { font-size: 1.8rem !important; }
+    
     .hero-split { flex-direction: column-reverse; text-align: center; margin-top: 0px; }
     .resume-grid { grid-template-columns: 1fr; gap: 2rem; }
     .work-grid { grid-template-columns: 1fr; gap: 1rem; }
