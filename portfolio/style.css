@@ -306,87 +306,50 @@ body.page-exit {
 }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* =========================================
-   MOBILE RESPONSIVENESS (Strictly <= 900px)
-========================================= */
 @media (max-width: 900px) {
-    
-    /* 1. Reset Navbar for Mobile Eye-Safety */
-    .navbar {
-        mix-blend-mode: normal; /* Disables the crazy color flipping */
-        background-color: var(--bg-color); /* Solid background */
-        padding: 1.5rem 5%;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Prevent words from cutting/hyphenating */
+    h1, h2, h3, p, a, span {
+        hyphens: none !important;
+        word-break: normal !important;
     }
 
-    /* 2. Show Hamburger Icon */
-    .hamburger { 
-        display: flex; 
-        flex-direction: column;
-        cursor: pointer;
-        gap: 6px;
-    }
-    .hamburger span {
-        width: 30px; height: 3px; background-color: var(--text-color);
-        border-radius: 2px; transition: all 0.3s ease;
-    }
+    /* Force font to scale down further to prevent cutting */
+    h1 { font-size: 2rem !important; }
+    h2 { font-size: 1.8rem !important; }
 
-    /* 3. The Dropdown Menu (Eye-Safe Glassmorphism) */
+    /* Fix Nav Dropdown */
+    .hamburger { display: flex; }
     .nav-links {
         position: absolute; 
-        top: 100%; /* Drops exactly below the header */
+        top: 100%; 
         left: 0;
         width: 100%;
-        
-        /* A dark, semi-transparent background */
         background-color: rgba(15, 15, 15, 0.95); 
-        /* The blur effect */
         backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        
         flex-direction: column; 
         align-items: center;
-        
-        /* Hidden by default using height */
         max-height: 0;
         overflow: hidden;
         opacity: 0;
-        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        
+        transition: all 0.4s ease;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
     }
 
-    /* Active class triggered by JS */
     .nav-links.nav-active { 
-        max-height: 800px; /* Increased from 500px to fit all 6 links */
+        max-height: 800px; 
         opacity: 1;
         padding: 2rem 0; 
     }
 
-    /* Slightly reduce the margin so the menu fits nicely on smaller phone screens */
     .nav-links li { 
-        margin: 1rem 0; /* Changed from 1.2rem to 1rem */
+        margin: 1rem 0; 
         width: 100%; 
         text-align: center; 
     }
-    /* Hamburger Animation to 'X' */
-    .hamburger.toggle span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-    .hamburger.toggle span:nth-child(2) { opacity: 0; }
-    .hamburger.toggle span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-    /* 4. Layout Adjustments to prevent breaking frames */
-    .hero-split { 
-        flex-direction: column-reverse; 
-        text-align: center; 
-        margin-top: 0px; /* Changed from 50px to 0px */
-    }
-    .hero-desc { margin: 0 auto 2rem; font-size: 1rem; }
-    .hero-actions { justify-content: center; flex-direction: column; align-items: stretch; width: 100%; }
-    
-    .resume-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .work-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    
-   h1 { font-size: clamp(2rem, 8vw, 2.5rem) !important; }
-   .experience-section, .work-section { padding-top: 120px; }
+    /* Layout Adjustments */
+    .hero-split { flex-direction: column-reverse; text-align: center; margin-top: 0px; }
+    .resume-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .work-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .experience-section, .work-section { padding-top: 100px; }
 }
