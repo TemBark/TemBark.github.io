@@ -341,21 +341,55 @@ body.page-exit {
 }
 
 /* =========================================
-   MOBILE RESPONSIVENESS
+   MOBILE RESPONSIVENESS (Top Dropdown)
 ========================================= */
 @media (max-width: 900px) {
     
-    /* Mobile Hamburger & Slide-out Nav */
     .hamburger { 
         display: flex; 
     }
 
     .nav-links {
-        position: fixed; 
-        right: -100%; 
-        top: 0; 
-        height: 100vh; 
-        width: 60%; 
-        max-width: 300px;
+        position: absolute; /* Positions it relative to the navbar */
+        top: 100%; /* Drops it directly below the navbar */
+        left: 0;
+        width: 100%;
         background-color: var(--bg-color); 
-        flex-direction: column;
+        flex-direction: column; 
+        align-items: center;
+        border-top: 1px solid var(--accent-color);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        
+        /* Animation Mechanics for Dropdown */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* When JavaScript adds 'nav-active', the menu expands downward */
+    .nav-links.nav-active { 
+        max-height: 400px; /* Expands to fit links */
+        opacity: 1;
+        padding: 1.5rem 0; /* Adds spacing inside the menu */
+    }
+
+    .nav-links li {
+        margin: 1rem 0; /* Spacing between links */
+    }
+    
+    /* Animate hamburger lines to an 'X' when open */
+    .hamburger.toggle span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.toggle span:nth-child(2) { opacity: 0; }
+    .hamburger.toggle span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* General Layout Adjustments */
+    .hero-split { flex-direction: column-reverse; text-align: center; margin-top: 80px; }
+    .hero-desc { margin: 0 auto 2rem; }
+    .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
+    .profile-placeholder { width: 250px; height: 250px; }
+    
+    /* Collapse Grids to 1 Column */
+    .resume-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .work-grid { grid-template-columns: 1fr; }
+}
