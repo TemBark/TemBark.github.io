@@ -318,12 +318,28 @@ body.page-exit {
         padding: 1.5rem 5%;
     }
 
-    /* 2. Force the Hamburger to show */
-    .hamburger { 
-        display: flex !important; 
-        cursor: pointer;
-        z-index: 9999;
-    }
+    /* Update this in your main CSS and your @media block */
+.hamburger { 
+    display: flex !important; 
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 9999;
+    
+    /* ADD THESE TWO LINES TO FIX 0x0 */
+    width: 30px; 
+    height: 24px; 
+    justify-content: center;
+}
+
+.hamburger span {
+    display: block; /* Ensures they act as physical elements */
+    width: 30px; 
+    height: 3px; 
+    background-color: var(--text-color);
+    border-radius: 2px; 
+    transition: all 0.3s ease;
+}
 
     /* 3. Dropdown Menu */
     .nav-links {
