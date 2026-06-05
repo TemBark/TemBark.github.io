@@ -155,15 +155,22 @@ body.page-exit {
     margin: 0 auto; 
 }
 
-/* Base button styles */
 .btn-primary, .btn-secondary {
     padding: 0.8rem 1.5rem; 
     border-radius: 50px; 
     font-weight: 600; 
     text-align: center;
     text-decoration: none;
-    flex: 1; /* Makes them the same length */
+    
+    /* FIX FOR VERTICAL ALIGNMENT */
+    display: inline-flex;       /* Changes block to flex to control alignment */
+    align-items: center;        /* Perfectly centers text vertically */
+    justify-content: center;    /* Perfectly centers text horizontally */
+    
+    flex: 1; 
     min-width: 150px;
+    height: 50px;               /* Defines a fixed height so centering is consistent */
+    line-height: 1;             /* Prevents line-height from pushing text off-center */
 }
 
 .btn-primary { background: var(--text-color); color: var(--bg-color); }
