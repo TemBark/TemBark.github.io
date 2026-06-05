@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Aizzuddin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="work-page">
+
+    <nav class="navbar">
+        <div class="logo">Aizzuddin.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html" class="active">Work</a></li>
+        </ul>
+    </nav>
+
+    <section class="work-section" style="padding-top: 150px;">
+        <div class="content-wrapper">
+            <h1 style="font-size: 3rem; margin-bottom: 2rem; text-align: center;">Selected Projects.</h1>
+            <div class="work-grid">
+                
+                <a href="#" class="work-item reveal" 
+                   data-title="CODEBREAK ESCAPE" 
+                   data-tech="Unity / C# / Game Design"
+                   data-vid="images/Codebreak-Escape.mp4" 
+                   data-desc="Codebreak Escape is a puzzle-driven game where players must utilize logic and system mechanics to navigate through secure areas. Focused heavily on custom C# scripting.">
+                    <div class="work-image">
+                        <video autoplay loop muted playsinline>
+                            <source src="images/Codebreak-Escape.mp4" type="video/mp4">
+                            <img src="images/sky-splitter.jpg" alt="-">
+                        </video>
+                        <div class="overlay">
+                            <h3>CODEBREAK ESCAPE</h3>
+                            <p>Unity / C# / Game Design</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item reveal"
+                   data-title="BLENDER ANIMATING" 
+                   data-tech="Modelling / Animating"
+                   data-vid="images/Animating.mp4" 
+                   data-desc="Commercial 3D modeling and animation project demonstrating advanced rendering techniques, lighting setups, and fluid motion graphics integration.">
+                    <div class="work-image">
+                        <video autoplay loop muted playsinline>
+                            <source src="images/Animating.mp4" type="video/mp4">
+                            <img src="images/redbull-zenitsu.jpg" alt="-">
+                        </video>
+                        <div class="overlay">
+                            <h3>BLENDER</h3>
+                            <p>Modelling / Animating</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item reveal"
+                   data-title="HANTU TEH O" 
+                   data-tech="OpenGL / 2D Side-scroller"
+                   data-vid="images/Hantu-Teh-O.mp4" 
+                   data-desc="A 2D side-scrolling platformer featuring custom level design and entity mechanics. Built to explore collision detection and smooth camera tracking.">
+                    <div class="work-image">
+                        <video autoplay loop muted playsinline>
+                            <source src="images/Hantu-Teh-O.mp4" type="video/mp4">
+                            <img src="images/hantu-teh-o.jpg" alt="-">
+                        </video>
+                        <div class="overlay">
+                            <h3>HANTU TEH O</h3>
+                            <p>OpenGL / 2D Side-scroller</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item reveal"
+                   data-title="SMART INVENTORY MANAGEMENT" 
+                   data-tech="C++ / System Architecture"
+                   data-vid="images/smart-inventory.mp4" 
+                   data-desc="A robust inventory management and reporting system designed to track stock levels, generate automated reports, and streamline database operations using C++.">
+                    <div class="work-image">
+                        <video autoplay loop muted playsinline>
+                            <source src="images/smart-inventory.mp4" type="video/mp4">
+                            <img src="images/bites-burger.jpg" alt="-">
+                        </video>
+                        <div class="overlay">
+                            <h3>SMART INVENTORY</h3>
+                            <p>C++ / Architecture</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-video-container">
+                <video id="modal-video" autoplay loop muted playsinline></video>
+            </div>
+            <h2 id="modal-title">Project Title</h2>
+            <h4 id="modal-tech" style="color: #999; margin-bottom: 15px; font-family: 'Syne', sans-serif;">Tech</h4>
+            <p id="modal-desc">Project description goes here...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
