@@ -40,6 +40,11 @@ h1, h2, h3, .logo {
     font-weight: 800; 
 }
 
+a[href^="mailto:"] {
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
 /* =========================================
    PAGE TRANSITION ANIMATIONS
 ========================================= */
@@ -354,13 +359,17 @@ body.page-exit {
 
     /* Active class triggered by JS */
     .nav-links.nav-active { 
-        max-height: 500px; 
+        max-height: 800px; /* Increased from 500px to fit all 6 links */
         opacity: 1;
         padding: 2rem 0; 
     }
 
-    .nav-links li { margin: 1.2rem 0; width: 100%; text-align: center; }
-    
+    /* Slightly reduce the margin so the menu fits nicely on smaller phone screens */
+    .nav-links li { 
+        margin: 1rem 0; /* Changed from 1.2rem to 1rem */
+        width: 100%; 
+        text-align: center; 
+    }
     /* Hamburger Animation to 'X' */
     .hamburger.toggle span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .hamburger.toggle span:nth-child(2) { opacity: 0; }
@@ -378,6 +387,6 @@ body.page-exit {
     .resume-grid { grid-template-columns: 1fr; gap: 3rem; }
     .work-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     
-    h1 { font-size: 2.5rem !important; } /* Hard lock on massive titles for mobile */
-    .experience-section, .work-section { padding-top: 120px; }
+   h1 { font-size: clamp(2rem, 8vw, 2.5rem) !important; }
+   .experience-section, .work-section { padding-top: 120px; }
 }
