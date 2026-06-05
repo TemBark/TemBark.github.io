@@ -1,12 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. Global Scroll Reveal Animations ---
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 
-    };
-
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -19,10 +14,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal');
     revealElements.forEach(el => observer.observe(el));
 
-    // --- 2. Work Page Modal Popup Logic ---
+
+    // --- 2. Mobile Hamburger Menu Logic ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+    }
+
+
+    // --- 3. Page Transition Animation Logic ---
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            
+            const target = this.href;
+            
+            // Only trigger the exit animation if it's an internal page link.
+            // Do not trigger for external links, the resume PDF, or mailto links.
+            if (
+                this.hostname === window.location.hostname && 
+                this.getAttribute('target') !== '_blank' && 
+                !this.getAttribute('href').startsWith('mailto:') &&
+                !this.getAttribute('href').startsWith('#')
+            ) {
+                e.preventDefault(); // Stop instant loading
+                
+                // Add the exit animation class to the body
+                document.body.classList.add('page-exit');
+                
+                // Wait 400ms for the animation to finish before moving to the next page
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 400); 
+            }
+        });
+    });
+
+
+    // --- 4. Work Page Modal Popup Logic ---
     const modal = document.getElementById('project-modal');
     
-    // This 'if' statement prevents errors on pages that don't have the modal (like Home or Contact)
     if (modal) {
         const closeBtn = document.querySelector('.close-btn');
         const modalTitle = document.getElementById('modal-title');
@@ -33,31 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.work-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault(); 
-                
-                // Pull data from the HTML attributes
-                const title = this.getAttribute('data-title');
-                const tech = this.getAttribute('data-tech');
-                const desc = this.getAttribute('data-desc');
-                const vidSrc = this.getAttribute('data-vid');
-
-                // Inject data into the modal
-                modalTitle.innerText = title;
-                modalTech.innerText = tech;
-                modalDesc.innerText = desc;
-                modalVideo.src = vidSrc; 
-                
-                // Show the modal
+                modalTitle.innerText = this.getAttribute('data-title');
+                modalTech.innerText = this.getAttribute('data-tech');
+                modalDesc.innerText = this.getAttribute('data-desc');
+                modalVideo.src = this.getAttribute('data-vid'); 
                 modal.style.display = 'flex'; 
             });
         });
 
-        // Close when clicking the X
         closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
-            modalVideo.src = ""; // Stops the video from playing in the background
+            modalVideo.src = ""; 
         });
 
-        // Close when clicking the dark background outside the modal
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.style.display = 'none';
