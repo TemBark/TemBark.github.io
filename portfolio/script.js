@@ -21,7 +21,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. Modal Popup Logic ---
     const modal = document.getElementById('project-modal');
-    const closeBtn = document.querySelector('.close-btn');
+    
+    // Only run this code if the modal exists on the current page (work.html)
+    if (modal) {
+        const closeBtn = document.querySelector('.close-btn');
+        const modalTitle = document.getElementById('modal-title');
+        const modalTech = document.getElementById('modal-tech');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalVideo = document.getElementById('modal-video');
+
+        document.querySelectorAll('.work-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                const title = this.getAttribute('data-title');
+                const tech = this.getAttribute('data-tech');
+                const desc = this.getAttribute('data-desc');
+                const vidSrc = this.getAttribute('data-vid');
+
+                modalTitle.innerText = title;
+                modalTech.innerText = tech;
+                modalDesc.innerText = desc;
+                modalVideo.src = vidSrc; 
+                modal.style.display = 'flex'; 
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalVideo.src = ""; 
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalVideo.src = "";
+            }
+        });
+    }
     
     // Modal Elements to update
     const modalTitle = document.getElementById('modal-title');
