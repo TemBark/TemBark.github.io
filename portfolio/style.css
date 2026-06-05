@@ -1,10 +1,42 @@
-/* --- PAGE TRANSITION ANIMATIONS --- */
-/* The blur-slide-in effect when a page loads */
+/* =========================================
+   BASE VARIABLES & RESET
+========================================= */
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #f4f4f4;
+    --accent-color: #1a1a1a;
+    --transition-speed: 0.4s;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
 body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Page Transition Entry Animation */
     animation: slideInBlur 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     opacity: 0;
 }
 
+/* Typography */
+h1, h2, h3, .logo { 
+    font-family: 'Syne', sans-serif; 
+    font-weight: 800; 
+}
+
+/* =========================================
+   PAGE TRANSITION ANIMATIONS
+========================================= */
 @keyframes slideInBlur {
     0% { opacity: 0; transform: translateX(30px); filter: blur(10px); }
     100% { opacity: 1; transform: translateX(0); filter: blur(0); }
@@ -20,14 +52,57 @@ body.page-exit {
     100% { opacity: 0; transform: translateX(-30px); filter: blur(10px); }
 }
 
+/* =========================================
+   NAVIGATION (DESKTOP & MOBILE)
+========================================= */
+.navbar {
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    padding: 2rem 5%;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    z-index: 100; 
+    mix-blend-mode: difference;
+}
 
-/* --- MOBILE HAMBURGER MENU --- */
+.logo { 
+    font-size: 1.5rem; 
+    letter-spacing: -1px; 
+}
+
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 2rem; 
+}
+
+.nav-links a {
+    color: var(--text-color); 
+    text-decoration: none; 
+    font-size: 0.9rem;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: opacity var(--transition-speed) ease;
+}
+
+.nav-links a:hover { 
+    opacity: 0.5; 
+}
+
+.nav-links a.active { 
+    border-bottom: 2px solid var(--text-color); 
+    padding-bottom: 5px; 
+}
+
+/* Hamburger Menu Icon (Hidden on Desktop) */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
     gap: 6px;
-    z-index: 101; /* Keeps it above the sliding menu */
+    z-index: 101; 
 }
 
 .hamburger span {
@@ -38,34 +113,249 @@ body.page-exit {
     transition: all 0.3s ease;
 }
 
-/* Mobile Responsiveness Overrides */
+/* =========================================
+   HERO SPLIT LAYOUT (HOME PAGE)
+========================================= */
+.hero { 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    padding: 0 5%; 
+}
+
+.hero-split { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 4rem; 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.hero-text { flex: 1; }
+
+.hero-text h1 { 
+    font-size: clamp(3rem, 6vw, 5rem); 
+    line-height: 1.1; 
+    letter-spacing: -2px; 
+    margin-bottom: 1rem; 
+}
+
+.hero-desc { 
+    font-size: 1.1rem; 
+    line-height: 1.7; 
+    color: #aaa; 
+    margin-bottom: 2rem; 
+    max-width: 550px; 
+}
+
+.hero-actions { display: flex; gap: 1rem; }
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    padding: 0.8rem 2rem; 
+    border-radius: 50px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    transition: all var(--transition-speed) ease; 
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-primary { background: var(--text-color); color: var(--bg-color); }
+.btn-primary:hover { background: #ccc; }
+
+.btn-secondary { border: 1px solid var(--text-color); color: var(--text-color); }
+.btn-secondary:hover { background: var(--text-color); color: var(--bg-color); }
+
+/* Profile Picture Circle */
+.hero-image-container { flex: 1; display: flex; justify-content: center; }
+
+.profile-placeholder {
+    width: 350px; 
+    height: 350px; 
+    border-radius: 50%; 
+    background: var(--accent-color);
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+    border: 4px solid var(--text-color);
+}
+
+.profile-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================
+   EXPERIENCE / ACADEMIC / ABOUT SECTIONS
+========================================= */
+.experience-section { 
+    padding: 50px 5%; 
+    display: flex; 
+    justify-content: center; 
+    min-height: 80vh; 
+}
+
+.content-wrapper { width: 100%; max-width: 1200px; }
+
+.resume-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    text-align: left; 
+}
+
+.job { margin-bottom: 2.5rem; }
+.job h4 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+.job .company { color: #888; font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+.job ul { list-style-position: inside; color: #ccc; line-height: 1.6; }
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+.skill-tags span { 
+    background: var(--accent-color); 
+    padding: 8px 16px; 
+    border-radius: 4px; 
+    font-size: 0.9rem; 
+    font-family: monospace; 
+    color: var(--text-color); 
+}
+
+/* =========================================
+   2x2 WORK GRID (PORTFOLIO)
+========================================= */
+.work-section { padding: 50px 5%; display: flex; justify-content: center; }
+
+.work-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem; 
+    width: 100%; 
+    max-width: 1200px; 
+}
+
+.work-item { 
+    text-decoration: none; 
+    color: var(--text-color); 
+    display: block; 
+    overflow: hidden; 
+    border-radius: 8px; 
+}
+
+.work-image { 
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 16/10; 
+    background-color: var(--accent-color); 
+    overflow: hidden; 
+}
+
+.work-image img, .work-image video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* Hover Overlays */
+.overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8); display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    opacity: 0; transition: opacity 0.4s ease; padding: 1rem;
+}
+
+.overlay h3 { font-size: 1.2rem; margin-bottom: 0.5rem; transform: translateY(20px); transition: transform 0.4s ease; }
+.overlay p { font-size: 0.9rem; color: #ccc; transform: translateY(20px); transition: transform 0.4s ease 0.1s; }
+
+.work-item:hover .work-image img, .work-item:hover .work-image video { transform: scale(1.05); }
+.work-item:hover .overlay { opacity: 1; }
+.work-item:hover .overlay h3, .work-item:hover .overlay p { transform: translateY(0); }
+
+/* =========================================
+   MODAL (VIDEO POPUP)
+========================================= */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px); 
+    justify-content: center; 
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--accent-color); 
+    padding: 2.5rem; 
+    border-radius: 12px;
+    width: 90%; 
+    max-width: 700px; 
+    position: relative; 
+    text-align: left;
+    animation: modalFade 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes modalFade { 
+    from { opacity: 0; transform: translateY(30px) scale(0.95); } 
+    to { opacity: 1; transform: translateY(0) scale(1); } 
+}
+
+.close-btn { 
+    position: absolute; 
+    top: 15px; 
+    right: 25px; 
+    font-size: 2.5rem; 
+    cursor: pointer; 
+    color: #fff; 
+    transition: 0.3s; 
+}
+
+.close-btn:hover { color: #ff4a4a; }
+
+.modal-video-container { 
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    background: #000; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+    overflow: hidden;
+}
+
+.modal-video-container video { width: 100%; height: 100%; object-fit: cover; }
+#modal-desc { line-height: 1.6; color: #ccc; }
+
+/* =========================================
+   SCROLL REVEAL UTILITY
+========================================= */
+.reveal { 
+    opacity: 0; 
+    transform: translateY(40px); 
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.reveal.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
 @media (max-width: 900px) {
-    .hamburger {
-        display: flex; /* Shows hamburger on phones */
+    
+    /* Mobile Hamburger & Slide-out Nav */
+    .hamburger { 
+        display: flex; 
     }
 
     .nav-links {
-        position: fixed;
-        right: -100%; /* Hides the menu off-screen */
-        top: 0;
-        height: 100vh;
-        width: 60%;
+        position: fixed; 
+        right: -100%; 
+        top: 0; 
+        height: 100vh; 
+        width: 60%; 
         max-width: 300px;
-        background-color: var(--bg-color);
+        background-color: var(--bg-color); 
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-left: 1px solid var(--accent-color);
-        transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-    }
-
-    .nav-links.nav-active {
-        right: 0; /* Slides menu in */
-    }
-
-    /* Animate hamburger to an X when open */
-    .hamburger.toggle span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-    .hamburger.toggle span:nth-child(2) { opacity: 0; }
-    .hamburger.toggle span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-}
