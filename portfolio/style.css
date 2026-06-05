@@ -1,3 +1,6 @@
+/* =========================================
+   BASE VARIABLES & RESET
+========================================= */
 :root {
     --bg-color: #0a0a0a;
     --text-color: #f4f4f4;
@@ -22,6 +25,14 @@ body {
     -webkit-font-smoothing: antialiased;
     animation: slideInBlur 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     opacity: 0;
+    /* Prevents horizontal scrolling if a word tries to break the frame */
+    overflow-x: hidden; 
+}
+
+/* Typography & Word Wrapping Fix */
+h1, h2, h3, h4, p, a, span { 
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 h1, h2, h3, .logo { 
@@ -29,6 +40,9 @@ h1, h2, h3, .logo {
     font-weight: 800; 
 }
 
+/* =========================================
+   PAGE TRANSITION ANIMATIONS
+========================================= */
 @keyframes slideInBlur {
     0% { opacity: 0; transform: translateX(30px); filter: blur(10px); }
     100% { opacity: 1; transform: translateX(0); filter: blur(0); }
@@ -43,15 +57,19 @@ body.page-exit {
     100% { opacity: 0; transform: translateX(-30px); filter: blur(10px); }
 }
 
+/* =========================================
+   DESKTOP NAVIGATION
+========================================= */
 .navbar {
     position: fixed; 
     top: 0; 
+    left: 0;
     width: 100%; 
     padding: 2rem 5%;
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    z-index: 100; 
+    z-index: 1000; 
     mix-blend-mode: difference;
 }
 
@@ -60,9 +78,11 @@ body.page-exit {
     letter-spacing: -1px; 
 }
 
+/* Desktop Links */
 .nav-links { 
     list-style: none; 
     display: flex; 
+    flex-direction: row;
     gap: 2rem; 
 }
 
@@ -75,31 +95,17 @@ body.page-exit {
     transition: opacity var(--transition-speed) ease;
 }
 
-.nav-links a:hover { 
-    opacity: 0.5; 
-}
+.nav-links a:hover { opacity: 0.5; }
+.nav-links a.active { border-bottom: 2px solid var(--text-color); padding-bottom: 5px; }
 
-.nav-links a.active { 
-    border-bottom: 2px solid var(--text-color); 
-    padding-bottom: 5px; 
-}
-
+/* Hidden on Desktop */
 .hamburger {
     display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 6px;
-    z-index: 101; 
 }
 
-.hamburger span {
-    width: 30px;
-    height: 3px;
-    background-color: var(--text-color);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
+/* =========================================
+   HERO SECTION (HOME PAGE)
+========================================= */
 .hero { 
     min-height: 100vh; 
     display: flex; 
@@ -120,7 +126,8 @@ body.page-exit {
 .hero-text { flex: 1; }
 
 .hero-text h1 { 
-    font-size: clamp(3rem, 6vw, 5rem); 
+    /* clamp() keeps text huge on desktop, but prevents it from breaking mobile frames */
+    font-size: clamp(2.5rem, 6vw, 5rem); 
     line-height: 1.1; 
     letter-spacing: -2px; 
     margin-bottom: 1rem; 
@@ -134,7 +141,7 @@ body.page-exit {
     max-width: 550px; 
 }
 
-.hero-actions { display: flex; gap: 1rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 .btn-primary, .btn-secondary {
     padding: 0.8rem 2rem; 
@@ -144,6 +151,7 @@ body.page-exit {
     transition: all var(--transition-speed) ease; 
     display: inline-block;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-primary { background: var(--text-color); color: var(--bg-color); }
@@ -155,19 +163,22 @@ body.page-exit {
 .hero-image-container { flex: 1; display: flex; justify-content: center; }
 
 .profile-placeholder {
-    width: 350px; 
-    height: 350px; 
+    width: 100%;
+    max-width: 350px; 
+    aspect-ratio: 1/1; 
     border-radius: 50%; 
     background: var(--accent-color);
     overflow: hidden; 
     box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
     border: 4px solid var(--text-color);
 }
-
 .profile-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 
+/* =========================================
+   CONTENT SECTIONS (EXPERIENCE / ACADEMIC)
+========================================= */
 .experience-section { 
-    padding: 50px 5%; 
+    padding: 150px 5% 50px; 
     display: flex; 
     justify-content: center; 
     min-height: 80vh; 
@@ -197,7 +208,10 @@ body.page-exit {
     color: var(--text-color); 
 }
 
-.work-section { padding: 50px 5%; display: flex; justify-content: center; }
+/* =========================================
+   PORTFOLIO 2x2 GRID (WORK PAGE)
+========================================= */
+.work-section { padding: 150px 5% 50px; display: flex; justify-content: center; }
 
 .work-grid { 
     display: grid; 
@@ -224,17 +238,15 @@ body.page-exit {
 }
 
 .work-image img, .work-image video { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
+    width: 100%; height: 100%; object-fit: cover; 
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
 .overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.8); display: flex; flex-direction: column;
+    background: rgba(0, 0, 0, 0.85); display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
-    opacity: 0; transition: opacity 0.4s ease; padding: 1rem;
+    opacity: 0; transition: opacity 0.4s ease; padding: 1.5rem;
 }
 
 .overlay h3 { font-size: 1.2rem; margin-bottom: 0.5rem; transform: translateY(20px); transition: transform 0.4s ease; }
@@ -244,28 +256,19 @@ body.page-exit {
 .work-item:hover .overlay { opacity: 1; }
 .work-item:hover .overlay h3, .work-item:hover .overlay p { transform: translateY(0); }
 
+/* =========================================
+   MODAL (VIDEO POPUP)
+========================================= */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    left: 0; 
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.95);
-    backdrop-filter: blur(10px); 
-    justify-content: center; 
-    align-items: center;
+    display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+    width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px); justify-content: center; align-items: center;
+    padding: 20px;
 }
 
 .modal-content {
-    background: var(--accent-color); 
-    padding: 2.5rem; 
-    border-radius: 12px;
-    width: 90%; 
-    max-width: 700px; 
-    position: relative; 
-    text-align: left;
+    background: var(--accent-color); padding: 2rem; border-radius: 12px;
+    width: 100%; max-width: 700px; position: relative; text-align: left;
     animation: modalFade 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -275,88 +278,102 @@ body.page-exit {
 }
 
 .close-btn { 
-    position: absolute; 
-    top: 15px; 
-    right: 25px; 
-    font-size: 2.5rem; 
-    cursor: pointer; 
-    color: #fff; 
-    transition: 0.3s; 
+    position: absolute; top: 10px; right: 20px; font-size: 2.5rem; 
+    cursor: pointer; color: #fff; transition: 0.3s; line-height: 1;
 }
 
 .close-btn:hover { color: #ff4a4a; }
 
 .modal-video-container { 
-    width: 100%; 
-    aspect-ratio: 16/9; 
-    background: #000; 
-    border-radius: 8px; 
-    margin-bottom: 20px; 
-    overflow: hidden;
+    width: 100%; aspect-ratio: 16/9; background: #000; 
+    border-radius: 8px; margin-bottom: 20px; overflow: hidden;
 }
 
 .modal-video-container video { width: 100%; height: 100%; object-fit: cover; }
+#modal-title { font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
 #modal-desc { line-height: 1.6; color: #ccc; }
 
+/* =========================================
+   SCROLL REVEAL UTILITY
+========================================= */
 .reveal { 
-    opacity: 0; 
-    transform: translateY(40px); 
-    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
+    opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
 }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-.reveal.active { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
-
+/* =========================================
+   MOBILE RESPONSIVENESS (Strictly <= 900px)
+========================================= */
 @media (max-width: 900px) {
     
-    .hamburger { 
-        display: flex; 
+    /* 1. Reset Navbar for Mobile Eye-Safety */
+    .navbar {
+        mix-blend-mode: normal; /* Disables the crazy color flipping */
+        background-color: var(--bg-color); /* Solid background */
+        padding: 1.5rem 5%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
+    /* 2. Show Hamburger Icon */
+    .hamburger { 
+        display: flex; 
+        flex-direction: column;
+        cursor: pointer;
+        gap: 6px;
+    }
+    .hamburger span {
+        width: 30px; height: 3px; background-color: var(--text-color);
+        border-radius: 2px; transition: all 0.3s ease;
+    }
+
+    /* 3. The Dropdown Menu (Eye-Safe Glassmorphism) */
     .nav-links {
         position: absolute; 
-        top: 100%; 
+        top: 100%; /* Drops exactly below the header */
         left: 0;
         width: 100%;
         
-        background-color: rgba(10, 10, 10, 0.75); 
-        
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px); 
+        /* A dark, semi-transparent background */
+        background-color: rgba(15, 15, 15, 0.95); 
+        /* The blur effect */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         
         flex-direction: column; 
         align-items: center;
         
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        
+        /* Hidden by default using height */
         max-height: 0;
         overflow: hidden;
         opacity: 0;
         transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
     }
 
+    /* Active class triggered by JS */
     .nav-links.nav-active { 
-        max-height: 400px; 
+        max-height: 500px; 
         opacity: 1;
-        padding: 1.5rem 0; 
+        padding: 2rem 0; 
     }
 
-    .nav-links li {
-        margin: 1rem 0; 
-    }
+    .nav-links li { margin: 1.2rem 0; width: 100%; text-align: center; }
     
+    /* Hamburger Animation to 'X' */
     .hamburger.toggle span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .hamburger.toggle span:nth-child(2) { opacity: 0; }
     .hamburger.toggle span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-    .hero-split { flex-direction: column-reverse; text-align: center; margin-top: 80px; }
-    .hero-desc { margin: 0 auto 2rem; }
-    .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
-    .profile-placeholder { width: 250px; height: 250px; }
+    /* 4. Layout Adjustments to prevent breaking frames */
+    .hero-split { flex-direction: column-reverse; text-align: center; margin-top: 50px; }
+    .hero-desc { margin: 0 auto 2rem; font-size: 1rem; }
+    .hero-actions { justify-content: center; flex-direction: column; align-items: stretch; width: 100%; }
     
-    .resume-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .work-grid { grid-template-columns: 1fr; }
+    .resume-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .work-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    
+    h1 { font-size: 2.5rem !important; } /* Hard lock on massive titles for mobile */
+    .experience-section, .work-section { padding-top: 120px; }
 }
