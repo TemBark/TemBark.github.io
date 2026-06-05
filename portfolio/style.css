@@ -146,17 +146,24 @@ body.page-exit {
     max-width: 550px; 
 }
 
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-actions { 
+    display: flex; 
+    gap: 1rem; 
+    justify-content: center; 
+    width: 100%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+}
 
+/* Base button styles */
 .btn-primary, .btn-secondary {
-    padding: 0.8rem 2rem; 
+    padding: 0.8rem 1.5rem; 
     border-radius: 50px; 
-    text-decoration: none; 
     font-weight: 600; 
-    transition: all var(--transition-speed) ease; 
-    display: inline-block;
-    cursor: pointer;
     text-align: center;
+    text-decoration: none;
+    flex: 1; /* Makes them the same length */
+    min-width: 150px;
 }
 
 .btn-primary { background: var(--text-color); color: var(--bg-color); }
@@ -380,6 +387,18 @@ body.page-exit {
     h2 { font-size: 1.8rem !important; }
     
     .hero-split { flex-direction: column-reverse; text-align: center; margin-top: 0px; }
+
+   .hero-actions { 
+        flex-direction: column; /* Stacks them vertically */
+        align-items: center;    /* Ensures they stay centered */
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;            /* Forces them to fill the mobile width */
+        max-width: 250px;       /* Keeps them from getting too huge */
+    }
+}
+   
     .resume-grid { grid-template-columns: 1fr; gap: 2rem; }
     .work-grid { grid-template-columns: 1fr; gap: 1rem; }
     .experience-section, .work-section { padding-top: 100px; }
