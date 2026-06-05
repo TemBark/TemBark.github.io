@@ -367,7 +367,11 @@ body.page-exit {
     .hamburger.toggle span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
     /* 4. Layout Adjustments to prevent breaking frames */
-    .hero-split { flex-direction: column-reverse; text-align: center; margin-top: 50px; }
+    .hero-split { 
+        flex-direction: column-reverse; 
+        text-align: center; 
+        margin-top: 0px; /* Changed from 50px to 0px */
+    }
     .hero-desc { margin: 0 auto 2rem; font-size: 1rem; }
     .hero-actions { justify-content: center; flex-direction: column; align-items: stretch; width: 100%; }
     
